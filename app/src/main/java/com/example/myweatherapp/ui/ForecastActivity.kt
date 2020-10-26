@@ -7,9 +7,12 @@ import android.os.Bundle
 import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.util.Log
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myweatherapp.R
 import com.example.myweatherapp.model.repository.OpenWeatherForecastRepository
 import com.example.myweatherapp.model.repository.WeatherForecastRepository
+import com.example.myweatherapp.ui.adapter.WeatherListAdapter
 import com.example.myweatherapp.viewModel.Status
 import com.example.myweatherapp.viewModel.WeatherForecastViewModel
 import com.example.myweatherapp.viewModel.WeatherForecastViewModelFactory
@@ -25,10 +28,13 @@ class ForecastActivity : AppCompatActivity() {
 
     private lateinit var viewModel: WeatherForecastViewModel
 
+    private val weatherListAdapter: WeatherListAdapter = WeatherListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forecast)
+
+        setupUI()
 
         val cityName = intent.getStringExtra(EXTRA_MESSAGE)
 
@@ -45,7 +51,9 @@ class ForecastActivity : AppCompatActivity() {
                             Status.SUCCESS -> {
                                 Log.d(TAG, "Success..." + result.data)
                                 result.data?.let { weatherData ->
-                                    // use the data
+                                    weatherListAdapter.setData(weatherData.list)
+                                    viewCityName.text = "${weatherData.city}, ${weatherData.country}"
+
 
                                 }
                             }
@@ -58,6 +66,16 @@ class ForecastActivity : AppCompatActivity() {
                 })
         }
     }
+
+    private fun setupUI() {
+        weatherForecastList.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context)
+            addItemDecoration(DividerItemDecoration(this.context, LinearLayoutManager.VERTICAL))
+            adapter = weatherListAdapter
+        }
+    }
+
 
     companion object {
         @JvmStatic
