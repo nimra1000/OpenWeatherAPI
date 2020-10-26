@@ -1,16 +1,17 @@
 package com.example.myweatherapp.ui
 
-import WeatherForecastViewModel
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.util.Log
+import androidx.lifecycle.Observer
 import com.example.myweatherapp.R
 import com.example.myweatherapp.model.repository.OpenWeatherForecastRepository
 import com.example.myweatherapp.model.repository.WeatherForecastRepository
 import com.example.myweatherapp.viewModel.Status
+import com.example.myweatherapp.viewModel.WeatherForecastViewModel
 import com.example.myweatherapp.viewModel.WeatherForecastViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_forecast.*
@@ -34,7 +35,7 @@ class ForecastActivity : AppCompatActivity() {
         viewModel = weatherForecastViewModelFactory.create(WeatherForecastViewModel::class.java)
 
         cityName?.let { nonNullCityName ->
-            viewModel.getWeatherForecast(nonNullCityName).observe(this,
+            viewModel.getWeatherForecast(nonNullCityName).observe(this, Observer
                 {
                     it?.let { result ->
                         when (result.status) {

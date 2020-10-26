@@ -1,11 +1,10 @@
 package com.example.myweatherapp.viewModel
-import WeatherForecastViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.myweatherapp.model.repository.WeatherForecastRepository
 
 class WeatherForecastViewModelFactory(
-    private val repository: WeatherForecastRepository,
+    private val repository: WeatherForecastRepository
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         require(modelClass.isAssignableFrom(WeatherForecastViewModel::class.java)) {

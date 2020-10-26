@@ -1,3 +1,5 @@
+package com.example.myweatherapp.viewModel
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.example.myweatherapp.model.repository.WeatherForecastRepository
