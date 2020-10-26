@@ -2,30 +2,20 @@ package com.example.myweatherapp.model.network
 
 import com.google.gson.annotations.SerializedName
 
-class FiveDayForecast {
-    @SerializedName("city")
-    val city: City? = null
 
-    @SerializedName("cnt")
-    val cnt = 0
+data class FiveDayForecast (
+    @field:SerializedName("city")
+    val city: City?,
 
-    @SerializedName("cod")
-    val cod: String? = null
+    @field:SerializedName("cnt")
+    val cnt: Int?,
 
-    @SerializedName("message")
-    val message = 0
+    @field:SerializedName("cod")
+    val cod: String?,
 
-    @SerializedName("list")
-    val list: List<ListItem>? =
-        null
+    @field:SerializedName("message")
+    val message: Int? = 0,
 
-    override fun toString(): String {
-        return "FiveDayForecast{" +
-                "city = '" + city + '\'' +
-                ",cnt = '" + cnt + '\'' +
-                ",cod = '" + cod + '\'' +
-                ",message = '" + message + '\'' +
-                ",list = '" + list + '\'' +
-                "}"
-    }
-}
+    @field:SerializedName("list")
+    val list: List<ListItem>?
+)

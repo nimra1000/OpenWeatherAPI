@@ -1,4 +1,7 @@
 package com.example.myweatherapp.viewModel
 
-class Status {
+enum class Status {
+    SUCCESS,
+    ERROR,
+    LOADING
 }

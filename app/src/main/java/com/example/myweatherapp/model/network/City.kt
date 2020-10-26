@@ -2,41 +2,25 @@ package com.example.myweatherapp.model.network
 
 import com.google.gson.annotations.SerializedName
 
-class City {
-    @SerializedName("country")
-    val country: String? = null
+data class City (
+    @field:SerializedName("country")
+    val country: String? = null,
 
-    @SerializedName("coord")
-    val coord: Coord? = null
+    @field:SerializedName("coord")
+    val coord: Coord? = null,
 
-    @SerializedName("sunrise")
-    val sunrise = 0
+    @field:SerializedName("sunrise")
+    val sunrise : Int? = null,
 
-    @SerializedName("timezone")
-    val timezone = 0
+    @field:SerializedName("timezone")
+    val timezone: Int? = null,
 
-    @SerializedName("sunset")
-    val sunset = 0
+    @field:SerializedName("sunset")
+    val sunset: Int? = null,
 
-    @SerializedName("name")
-    val name: String? = null
+    @field:SerializedName("name")
+    val name: String? = null,
 
     @SerializedName("id")
-    val id = 0
-
-    @SerializedName("population")
-    val population = 0
-
-    override fun toString(): String {
-        return "City{" +
-                "country = '" + country + '\'' +
-                ",coord = '" + coord + '\'' +
-                ",sunrise = '" + sunrise + '\'' +
-                ",timezone = '" + timezone + '\'' +
-                ",sunset = '" + sunset + '\'' +
-                ",name = '" + name + '\'' +
-                ",id = '" + id + '\'' +
-                ",population = '" + population + '\'' +
-                "}"
-    }
-}
+    val id: Int? = null
+)
